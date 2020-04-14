@@ -66,11 +66,11 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
 
 // Grab NODE_ENV and MOGUL_APP_* environment variables and prepare them to be
 // injected into the application via DefinePlugin in webpack configuration.
-const REACT_APP = /^MOGUL_APP/i;
+const MOGUL_APP = /^MOGUL_APP_/i;
 
 function getClientEnvironment(publicUrl) {
   const raw = Object.keys(process.env)
-    .filter((key) => REACT_APP.test(key))
+    .filter((key) => MOGUL_APP.test(key))
     .reduce(
       (env, key) => {
         env[key] = process.env[key];
